@@ -1,0 +1,58 @@
+
+
+.bg1 {
+  background-image: url(../img/bg1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+body {
+  font-size: 20px;
+}
+
+.zd_input {
+  position: relative;
+  display: block;
+  max-width: 450px;
+  max-height: 90px;
+  line-height: 90px;
+  font-size: 28px;
+  text-align: center;
+  background-color: #fff;
+  z-index: 3;
+  border: 1px solid #90e5f8;
+}
+
+.bg-gradient {
+  background-image:
+      linear-gradient(rgb(87, 200, 181), rgb(59, 107, 108))
+}
+
+.text-anima {
+  animation: row-and-shrink 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+#bgbtn {
+  display: none;
+}
+
+#bgbtn.show {
+  display: flex;
+}
+
+@keyframes row-and-shrink {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

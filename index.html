@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>株式分析と予測</title>
+  <link rel="stylesheet" href="./style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+  <style>
+    .scanning {
+      background: url(./img/2.png) no-repeat;
+      top: -94px;
+      -webkit-animation: downLight 4s infinite ease-in-out none;
+      animation: downLight 4s infinite ease-in-out none;
+    }
+
+    @-webkit-keyframes downLight {
+      from {
+        top: -94px;
+      }
+
+      to {
+        top: 130px;
+      }
+    }
+
+    @keyframes downLight {
+      from {
+        top: -94px;
+      }
+
+      to {
+        top: 130px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="bg-[#63D5C3] overflow-hidden">
+    <div class="max-w-[750px] m-auto pt-10 px-4 sm:px-0">
+      <h1 class="text-center text-[35px] sm:text-[40px] font-semibold text-white pb-4">
+        あなたの株は <span class="text-[#DC2626]">買う</span>べきか
+        <span class="text-[#12FD06]">売る</span> べき?
+      </h1>
+      <div class="relative border">
+        <img src="img/1.png" alt="" />
+        <div
+          class="absolute top-1/2 left-1/2 -translate-y-1/3 -translate-x-1/2 h-[45%] w-[30%] rounded-full overflow-hidden">
+          <div class="relative w-full h-full">
+            <div class="scanning bg-contain absolute top-1/2 left-1/2 -translate-x-1/2 w-full h-full"></div>
+          </div>
+        </div>
+      </div>
+      <p class="text-center py-4 text-[25px] font-medium text-white">
+        AI診断レポートを成功裏に受け取った人数、計
+        <span class="text-[#FFFF00]">10140</span> 人<br />
+        <span class="text-[#DC2626]">データベースは</span>
+        <span class="text-[#FFFF00]">2024年8月19日15時</span><span class="text-[#DC2626]">に更新</span><br />
+        AIアルゴリズムのバージョンは
+        <span class="text-[#FFFF00] text-[20px]">3.0.16</span>です
+      </p>
+      <div class="flex justify-center">
+        <input class="zd_input head_alone_ipt px-2 sm:px-12" maxlength="18" id="gupiao1" placeholder="銘柄コード/会社名入力"
+          oninput="inputChange(this,'gupiao1','codelist1','instr1')" />
+      </div>
+      <div class="relative flex justify-center m-auto text-anima px-4 btn">
+        <img src="img/zd_btn.png" alt="" class="" />
+        <div class="absolute text-xl w-full sm:text-[28px] text-[#FFFF00] text-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          AI予測報告を無料で受け取る
+        </div>
+      </div>
+      <div class="relative">
+        <img src="img/4.png" alt="" />
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:min-w-[500px] min-w-full">
+          <div class="flex justify-center">
+            <input class="zd_input head_alone_ipt px-2 sm:px-12" maxlength="18" id="gupiao1" placeholder="銘柄コード/会社名入力"
+              oninput="inputChange(this,'gupiao1','codelist1','instr1')" />
+          </div>
+          <div class="relative flex justify-center m-auto text-anima px-4 mt-8 btn">
+            <img src="img/5.png" alt="" class="w-full" />
+            <div class="absolute text-[20px] sm:text-[28px] text-white text-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full">
+              AI予測報告を無料で受け取る
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="relative md:text-2xl text-sm mt-10">
+        <img src="img/6.png" alt="" />
+        <div class="absolute md:top-32 top-16 w-full px-14 md:h-[74%] h-[70%] overflow-hidden text-white">
+          <ul class="*:py-5 pt-10" style="transition: 0.3s" id="content">
+            <li>
+              <p>
+                <span class="text-orange-500">****315:</span>新銘柄の将来性も的中しやすい。分析能力に頼れるわ…
+              </p>
+            </li>
+            <li>
+              <p>
+                <span class="text-orange-500">****101:</span>最初は疑っていましたが、1年で3割以上の利益を得ました...
+              </p>
+            </li>
+            <li>
+              <p>
+                <span class="text-orange-500">****432:</span>このAIの予測はまちがうことない!信頼できる
+              </p>
+            </li>
+            <li>
+              <p>
+                <span>****722:</span>3069の株をチェックしてみたけど、かなり当たってる感じ…
+              </p>
+            </li>
+            <li>
+              <p>
+                <span class="text-orange-500">****912:</span>期待を裏切らない、おすすめしてくれた銘柄はやっぱり上昇…
+              </p>
+            </li>
+            <li>
+              <p>
+                <span>****673:</span>プロの機関は本当に個人投資家たちよりも上手です…
+              </p>
+            </li>
+            <li>
+              <p>
+                <span class="text-orange-500">****262:</span>株初心者の私にとってはとても役に立つ…
+              </p>
+            </li>
+            <li>
+              <p>
+                <span class="text-orange-500">****811:</span>的中率が高い、少し儲けた…
+              </p>
+            </li>
+            <li>
+              <p>
+                <span class="text-orange-500">****254:</span>おすすめの爆騰株、明日は大幅上昇してほしい
+              </p>
+            </li>
+            <li>
+              <p>
+                <span class="text-orange-500">****262:</span>割り当てられた投資顧問は非常にプロフェッショナルで
+              </p>
+            </li>
+            <li>
+              <p>
+                <span class="text-orange-500">****131:</span>本当に株市場初心者にとって恵まれたものだ
+              </p>
+            </li>
+            <li>
+              <p>
+                <span class="text-orange-500">****815:</span>すごい正解率だな、このAIは本当に分かってくれる…
+              </p>
+            </li>
+            <li>
+              <p>
+                <span class="text-orange-500">****829:</span>1年間で利益5割上昇、特に新銘柄の予測が的中した…
+              </p>
+            </li>
+            <li>
+              <p>
+                <span>****315:</span>新銘柄の将来性も的中しやすい。分析能力に頼れるわ…
+              </p>
+            </li>
+            <li>
+              <p>
+                <span class="text-orange-500">****101:</span>最初は疑っていましたが、1年で3割以上の利益を得ました...
+              </p>
+            </li>
+            <li>
+              <p>
+                <span class="text-orange-500">****432:</span>このAIの予測はまちがうことない!信頼できる
+              </p>
+            </li>
+            <li>
+              <p>
+                <span class="text-orange-500">****722:</span>3069の株をチェックしてみたけど、かなり当たってる感じ…
+              </p>
+            </li>
+            <li>
+              <p>
+                <span class="text-orange-500">****912:</span>期待を裏切らない、おすすめしてくれた銘柄はやっぱり上昇…
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="flex justify-center mt-10">
+        <input class="zd_input head_alone_ipt px-2 sm:px-12" maxlength="18" id="gupiao1" placeholder="銘柄コード/会社名入力"
+          oninput="inputChange(this,'gupiao1','codelist1','instr1')" />
+      </div>
+      <div class="flex justify-center mt-10 btn text-anima ">
+        <button class="bg-[#234e6f] text-[#FFFF00] text-[22px] sm:text-[25px] rounded-xl pb-2">
+          <div class="bg-[#0083E9] w-full h-full rounded-xl inline-block py-5 sm:py-6 px-6 sm:px-16">
+            AI予測報告を無料で受け取る
+          </div>
+        </button>
+      </div>
+      <div class="mt-10 h-[300px] overflow-hidden flex justify-center">
+        <ul class="*:py-5 pt-10 text-white" style="transition: 0.3s" id="show-content">
+          <li>
+            ***6295が<span class="text-red-700">ソニーＧ(6758)</span>分析予測を行いました
+          </li>
+          <li>
+            ***0051が<span class="text-red-700">ソフトＢＧ(9984)</span>分析予測を行いました
+          </li>
+          <li>
+            ***0509が<span class="text-red-700">トヨタ(7203)</span>分析予測を行いました
+          </li>
+          <li>
+            ***3859が<span class="text-red-700">テスラ(TSLA)</span>分析予測を行いました
+          </li>
+          <li>
+            ***0438が<span class="text-red-700">三菱ＵＦＪ(8306)</span>分析予測を行いました
+          </li>
+          <li>
+            ***2150が<span class="text-red-700">アップル(AAPL)</span>分析予測を行いました
+          </li>
+          <li>
+            ***3110が<span class="text-red-700">楽天Ｇ(4755)</span>分析予測を行いました
+          </li>
+          <li>
+            ***3597が<span class="text-red-700">グリー(3632)</span>分析予測を行いました
+          </li>
+          <li>
+            ***0050が<span class="text-red-700">ＮＴＴ(9432)</span>分析予測を行いました
+          </li>
+          <li>
+            ***6295が<span class="text-red-700">ソニーＧ(6758)</span>分析予測を行いました
+          </li>
+          <li>
+            ***0051が<span class="text-red-700">ソフトＢＧ(9984)</span>分析予測を行いました
+          </li>
+          <li>
+            ***0509が<span class="text-red-700">トヨタ(7203)</span>分析予測を行いました
+          </li>
+          <li>
+            ***3859が<span class="text-red-700">テスラ(TSLA)</span>分析予測を行いました
+          </li>
+          <li>
+            ***0438が<span class="text-red-700">三菱ＵＦＪ(8306)</span>分析予測を行いました
+          </li>
+          <li>
+            ***2150が<span class="text-red-700">アップル(AAPL)</span>分析予測を行いました
+          </li>
+          <li>
+            ***3110が<span class="text-red-700">楽天Ｇ(4755)</span>分析予測を行いました
+          </li>
+          <li>
+            ***3597が<span class="text-red-700">グリー(3632)</span>分析予測を行いました
+          </li>
+          <li>
+            ***0050が<span class="text-red-700">ＮＴＴ(9432)</span>分析予測を行いました
+          </li>
+        </ul>
+      </div>
+      <div class="relative flex justify-center items-center mt-10 border w-full">
+        <img src="./img/7.jfif" class="h-[448px] sm:h-full w-full" />
+        <div class="absolute top-0 sm:top-[13%] w-full text-white p-3 md:px-10 mt-20">
+          <h1 class="text-white text-center text-md sm:text-2xl">
+            先着88名限定
+          </h1>
+          <div class="grid grid-cols-2 gap-3 mt-10">
+            <article class="border border-[#035FBF] w-full">
+              <h1 class="text-center text-sm sm:text-2xl p-2 md:p-4 bg-[#035FBF] tracking-wide">
+                毎日3銘柄の<br />おすすめを
+              </h1>
+              <div class="flex justify-center py-4 px-2 sm:p-4 text-anima">
+                <button
+                  class="bg-[#FFFF00] text-gray-800 font-[500] sm:font-semibold text-sm sm:text-base md:text-xl py-2 px-2 sm:px-8 sm:py-4 rounded-full">
+                  無料で受け取る
+                </button>
+              </div>
+            </article>
+            <article class="border border-[#035FBF] w-full">
+              <h1 class="text-center text-sm sm:text-2xl p-2 md:p-4 bg-[#035FBF] tracking-wide">
+                毎日3銘柄の<br />おすすめを
+              </h1>
+              <div class="flex justify-center py-4 px-2 sm:p-4 text-anima">
+                <button
+                  class="bg-[#FFFF00] text-gray-800 font-[500] sm:font-semibold text-sm sm:text-base md:text-xl py-2 px-2 sm:px-8 sm:py-4 rounded-full">
+                  無料で受け取る
+                </button>
+              </div>
+            </article>
+            <article class="border border-[#035FBF] w-full">
+              <h1 class="text-center text-sm sm:text-2xl p-2 md:p-4 bg-[#035FBF] tracking-wide">
+                毎日3銘柄の<br />おすすめを
+              </h1>
+              <div class="flex justify-center py-4 px-2 sm:p-4 text-anima">
+                <button
+                  class="bg-[#FFFF00] text-gray-800 font-[500] sm:font-semibold text-sm sm:text-base md:text-xl py-2 px-2 sm:px-8 sm:py-4 rounded-full">
+                  無料で受け取る
+                </button>
+              </div>
+            </article>
+            <article class="border border-[#035FBF] w-full">
+              <h1 class="text-center text-sm sm:text-2xl p-2 md:p-4 bg-[#035FBF] tracking-wide">
+                毎日3銘柄の<br />おすすめを
+              </h1>
+              <div class="flex justify-center py-4 px-2 sm:p-4 text-anima">
+                <button
+                  class="bg-[#FFFF00] text-gray-800 font-[500] sm:font-semibold text-sm sm:text-base md:text-xl py-2 px-2 sm:px-8 sm:py-4 rounded-full">
+                  無料で受け取る
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-gradient mt-10 w-full pb-5 px-1 sm:px-5">
+        <h1 class="text-center md:text-[40px] text-[23px] text-red-900 font-bold py-3">
+          あなたの銘柄は上がるか下がる？
+        </h1>
+
+        <div class="flex gap-1 sm:gap-3 items-center bg-white w-full">
+          <i class="fa-solid fa-magnifying-glass text-xl sm:text-2xl text-gray-400 p-1 sm:p-3"></i>
+          <input class="outline-none sm:px-4 w-full text-lg sm:text-3xl" type="text" placeholder="銘柄コード/会社名入力">
+          <button class="text-white bg-green-600 text-lg sm:text-3xl p-2 sm:p-5 w-56 sm:w-6/12">無料AI予測</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="bgbtn"
+    class="w-full h-screen fixed bg-black bg-opacity-55 top-0 left-0 flex justify-center items-center z-40">
+    <div class="relative p-3">
+      <img src="img/8.png" alt="" />
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%]">
+        <p class="text-center pb-4 text-red-900 font-medium md:text-[24px] text-[14px]">
+          AI分析が完了<br />報告はLINEで送信されます
+        </p>
+        <img src="img/9.png" alt="" class="text-anima" />
+        <div class="md:text-[24px] text-[14px]">
+          <p>「<span class="codes"></span>」</p>
+          <p>最新の内部情報が入手されました</p>
+          <p id="message" style="color: red">
+            LINEで友だち追加し、メッセージを送信すると、<strong>8月21日の予測</strong>レポートが取得できます。
+          </p>
+          <p style="font-size: 18px">
+            (「レポート請求」とメッセージを送信してください)
+          </p>
+        </div>
+      </div>
+      <div class="absolute top-2 right-4 bg-red-700 w-[50px] h-[50px] rounded-full flex justify-center items-center"
+        id="close">
+        <i class="fa-solid fa-xmark text-[27px] text-white"></i>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
